@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ভালোবাসা পেজ</title>
+  <title>Love Page</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,16 +14,10 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background: linear-gradient(135deg, #ffe6f0, #ffd6f7);
-      background-size: 300% 300%;
-      animation: backgroundFlow 20s ease infinite;
       font-family: 'Segoe UI', sans-serif;
-    }
-
-    @keyframes backgroundFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      background: url('https://images.unsplash.com/photo-1531592522013-f9a1f6c6e65f?auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+      background-size: cover;
+      backdrop-filter: brightness(0.9) blur(2px);
     }
 
     .container {
@@ -39,10 +33,10 @@
     }
 
     h1 {
-      font-size: 2.8rem;
-      color: #cc007a;
+      font-size: 2.2rem;
+      color: #fff;
       margin-bottom: 40px;
-      text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+      text-shadow: 2px 2px 8px rgba(255, 0, 128, 0.8);
       animation: fadeIn 2s ease-in;
     }
 
@@ -55,8 +49,8 @@
     }
 
     .btn {
-      font-size: 2.5rem;
-      padding: 1.2em 2.5em;
+      font-size: 1.8rem;
+      padding: 1em 2.2em;
       border: none;
       border-radius: 15px;
       background: linear-gradient(145deg, #ff66b2, #ff1493);
@@ -93,12 +87,12 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
 
       .btn {
-        font-size: 2rem;
-        padding: 1em 2em;
+        font-size: 1.4rem;
+        padding: 0.8em 1.6em;
       }
 
       .buttons {
@@ -115,15 +109,15 @@
 <body>
 
   <div class="container">
-    <h1>তুমি কি আমাকে ভালোবাসো?</h1>
+    <h1>Do your eyes see the same love I feel for you ?💕🌼</h1>
     <div class="buttons">
-      <button class="btn" onclick="startEmojiShower()">হা</button>
-      <button class="btn" id="naBtn" onclick="moveNa()">না</button>
+      <button class="btn" onclick="startEverything()">YES❣💖</button>
+      <button class="btn" id="naBtn" onclick="moveNa()">NO💢</button>
     </div>
   </div>
 
-  <!-- 🎵 Background Music -->
-  <audio id="bgMusic" autoplay loop>
+  <!-- 🎵 Background Music (starts after first click) -->
+  <audio id="bgMusic" loop>
     <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
@@ -131,6 +125,21 @@
   <script>
     let showerStarted = false;
     let naClickCount = 0;
+    let musicStarted = false;
+
+    function startEverything() {
+      startEmojiShower();
+      playMusic();
+    }
+
+    function playMusic() {
+      if (!musicStarted) {
+        const audio = document.getElementById('bgMusic');
+        audio.volume = 0.4;
+        audio.play();
+        musicStarted = true;
+      }
+    }
 
     function startEmojiShower() {
       if (showerStarted) return;
@@ -167,6 +176,8 @@
       naBtn.style.position = 'fixed';
       naBtn.style.left = randX + 'px';
       naBtn.style.top = randY + 'px';
+
+      playMusic(); // trigger music if clicked NO
     }
   </script>
 
