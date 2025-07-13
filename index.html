@@ -116,9 +116,9 @@
     </div>
   </div>
 
-  <!-- 🎵 Background Music (starts after first click) -->
+  <!-- 🎵 Your background music from Pixabay -->
   <audio id="bgMusic" loop>
-    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg" />
+    <source src="https://cdn.pixabay.com/audio/2023/05/31/audio_d577776d5c.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
@@ -135,8 +135,8 @@
     function playMusic() {
       if (!musicStarted) {
         const audio = document.getElementById('bgMusic');
-        audio.volume = 0.4;
-        audio.play();
+        audio.volume = 0.5;
+        audio.play().catch(err => console.log("Autoplay blocked, will play after interaction."));
         musicStarted = true;
       }
     }
@@ -177,7 +177,7 @@
       naBtn.style.left = randX + 'px';
       naBtn.style.top = randY + 'px';
 
-      playMusic(); // trigger music if clicked NO
+      playMusic(); // play music if NO is clicked too
     }
   </script>
 
